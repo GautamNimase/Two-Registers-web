@@ -7,7 +7,8 @@
     "build": "cd frontend && npm ci && npm run build",
     "dev": "cd frontend && npm run dev",
     "install-deps": "cd frontend && npm ci",
-    "start": "cd frontend && npm run preview"
+    "start": "cd frontend && npm run preview",
+    "preview": "cd frontend && npm run preview"
   },
   "workspaces": [
     "frontend"
