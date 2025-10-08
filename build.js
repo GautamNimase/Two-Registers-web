@@ -11,13 +11,7 @@ try {
   process.chdir('frontend');
   
   console.log('📦 Installing dependencies...');
-  // Fix for npm optional dependencies bug with Rollup
-  try {
-    execSync('npm install', { stdio: 'inherit' });
-  } catch (error) {
-    console.log('⚠️  Initial install failed, trying to fix Rollup dependencies...');
-    execSync('npm install --force', { stdio: 'inherit' });
-  }
+  execSync('npm install', { stdio: 'inherit' });
   
   console.log('🔨 Building the application...');
   execSync('npm run build', { stdio: 'inherit' });
