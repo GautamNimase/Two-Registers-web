@@ -11,7 +11,17 @@ try {
   process.chdir('frontend');
   
   console.log('📦 Installing dependencies...');
-  execSync('npm install', { stdio: 'inherit' });
+  // Use npm install with legacy peer deps to handle optional dependencies better
+  try {
+    execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
+  } catch (error) {
+    console.log('⚠️  First install attempt failed, trying alternative approach...');
+    // Fallback: remove package-lock.json and try again
+    if (fs.existsSync('package-lock.json')) {
+      fs.unlinkSync('package-lock.json');
+    }
+    execSync('npm install --legacy-peer-deps', { stdio: 'inherit' });
+  }
   
   console.log('🔨 Building the application...');
   execSync('npm run build', { stdio: 'inherit' });
