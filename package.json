@@ -4,7 +4,7 @@
   "description": "Two Registers - Modern Website with React and Tailwind CSS",
   "private": true,
   "scripts": {
-    "build": "node build-simple.js",
+    "build": "cd frontend && rm -rf node_modules package-lock.json && npm install --force && npm run build && cd .. && cp -r frontend/dist build",
     "build:force": "cd frontend && npm install --force && npm run build && cd .. && node -e \"const fs = require('fs'); if (fs.existsSync('build')) fs.rmSync('build', { recursive: true, force: true }); require('./build.js').copyDir('frontend/dist', 'build');\"",
     "dev": "cd frontend && npm run dev",
     "install-deps": "cd frontend && npm ci",
