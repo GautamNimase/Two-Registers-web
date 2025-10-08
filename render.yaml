@@ -2,7 +2,7 @@ services:
   - type: web
     name: two-registers-web
     env: static
-    buildCommand: node build-robust.js
+    buildCommand: cd frontend && rm -rf node_modules package-lock.json && npm install --force && npm run build && cd .. && cp -r frontend/dist build
     staticPublishPath: build
     plan: free
     envVars:
