@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: two-registers-web
+    env: node
+    buildCommand: cd frontend && npm ci && npm run build
+    startCommand: cd frontend && npm run preview
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
